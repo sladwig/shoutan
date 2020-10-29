@@ -17,7 +17,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
      allow do
-          origins 'http://devd.io:8000', "http://goban.surge.sh"
+          origins 'http://devd.io:8000', "http://goban.surge.sh", "https://goban.surge.sh"
           resource '*',
                headers: :any,
                methods: [:get, :post, :put, :patch, :delete, :options, :head]
