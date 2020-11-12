@@ -8,8 +8,9 @@ class GameChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def state data
+  def receive data
     game = Game.find(params[:id])
+
     GameChannel.broadcast_to game, data
   end
 end
