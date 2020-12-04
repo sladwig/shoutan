@@ -1,16 +1,18 @@
 class GameChannel < ApplicationCable::Channel
   def subscribed
-    game = Game.find(params[:id])
-    stream_for game
+    # puts "Yeah here the params", params[:game]
+    # game = Game.find (params[:id])
+    stream_for "game_#{params[:game]}"
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def receive data
-    game = Game.find(params[:id])
+  def receive(data)
+    # puts params, "yeah", params[:game]
+    # game = Game.find(params[:id])
 
-    GameChannel.broadcast_to game, data
+    GameChannel.broadcast_to "game_#{params[:game]}", data
   end
 end
